@@ -1,11 +1,4 @@
 <template>
-<!--  <el-card>-->
-<!--    用户名:<input type="text" v-model="loginForm.username" placeholder="请输入用户名">-->
-<!--    <br><br>-->
-<!--    密码:<input type="password" v-model="loginForm.password" placeholder="请输入密码">-->
-<!--    <br><br>-->
-<!--    <button v-on:click="login">登录</button>-->
-<!--  </el-card>-->
   <body id="poster">
     <el-form class="login-container" label-position="left" label-width="0px">
       <h3 class="login-title">系统登录</h3>
@@ -17,6 +10,9 @@
       </el-form-item>
       <el-form-item>
         <el-button type="primary" style="width: 100%;background: #505458;border: none" v-on:click="login">登录</el-button>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="success" style="width: 100%;background: lightsteelblue; border: none" v-on:click="register">注册</el-button>
       </el-form-item>
     </el-form>
   </body>
@@ -30,7 +26,7 @@ export default {
     return {
       loginForm: {
         username: 'admin',
-        password: '35b9529f89cfb9b848060ca576237e17'
+        password: '123'
       },
       responseResult: []
     }
@@ -41,7 +37,7 @@ export default {
       console.log(this.$store.state)
       this.$axios.post('/login', {
         username: this.loginForm.username,
-        password: this.loginForm.password
+        password: this.$md5(this.loginForm.password)
       })
         .then(successResponse => {
           if (successResponse.data.code === 200) {
@@ -53,6 +49,9 @@ export default {
         })
         .catch(failResponse => {
         })
+    },
+    register () {
+      this.$router.push({path: '/register'})
     }
   }
 }
@@ -77,7 +76,7 @@ export default {
   }
 
   #poster {
-    background: url("../assets/eva.jpg") no-repeat;
+    background: url("../assets/img/bg/eva1.jpg") no-repeat;
     background-position: center;
     height: 100%;
     width: 100%;
