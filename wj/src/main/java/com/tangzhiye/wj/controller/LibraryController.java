@@ -1,7 +1,7 @@
-package com.tanghziye.wj.controller;
+package com.tangzhiye.wj.controller;
 
-import com.tanghziye.wj.pojo.Book;
-import com.tanghziye.wj.service.BookService;
+import com.tangzhiye.wj.pojo.Book;
+import com.tangzhiye.wj.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;

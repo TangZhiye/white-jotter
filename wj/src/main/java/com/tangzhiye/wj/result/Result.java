@@ -1,4 +1,4 @@
-package com.tanghziye.wj.result;
+package com.tangzhiye.wj.result;
 
 public class Result {
     //响应码

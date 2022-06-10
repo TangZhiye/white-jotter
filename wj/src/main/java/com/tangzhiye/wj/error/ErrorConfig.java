@@ -1,4 +1,4 @@
-package com.tanghziye.wj.error;
+package com.tangzhiye.wj.error;
 
 import org.springframework.boot.web.server.ErrorPage;
 import org.springframework.boot.web.server.ErrorPageRegistrar;

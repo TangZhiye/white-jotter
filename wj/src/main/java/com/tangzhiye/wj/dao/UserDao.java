@@ -1,6 +1,6 @@
-package com.tanghziye.wj.dao;
+package com.tangzhiye.wj.dao;
 
-import com.tanghziye.wj.pojo.User;
+import com.tangzhiye.wj.pojo.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserDao extends JpaRepository<User, Integer> {

@@ -1,16 +1,12 @@
-package com.tanghziye.wj.config;
+package com.tangzhiye.wj.config;
 
-import com.tanghziye.wj.interceptor.LoginInterceptor;
+import com.tangzhiye.wj.interceptor.LoginInterceptor;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 @SpringBootConfiguration
 public class MyWebConfigurer implements WebMvcConfigurer {

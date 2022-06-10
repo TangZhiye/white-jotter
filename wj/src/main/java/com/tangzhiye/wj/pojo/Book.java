@@ -1,4 +1,4 @@
-package com.tanghziye.wj.pojo;
+package com.tangzhiye.wj.pojo;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

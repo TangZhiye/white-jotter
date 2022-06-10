@@ -1,7 +1,7 @@
-package com.tanghziye.wj.service;
+package com.tangzhiye.wj.service;
 
-import com.tanghziye.wj.dao.UserDao;
-import com.tanghziye.wj.pojo.User;
+import com.tangzhiye.wj.dao.UserDao;
+import com.tangzhiye.wj.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

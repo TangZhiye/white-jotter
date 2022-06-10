@@ -1,6 +1,6 @@
-package com.tanghziye.wj.interceptor;
+package com.tangzhiye.wj.interceptor;
 
-import com.tanghziye.wj.pojo.User;
+import com.tangzhiye.wj.pojo.User;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
