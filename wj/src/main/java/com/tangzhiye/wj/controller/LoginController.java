@@ -22,13 +22,16 @@ public class LoginController {
     @Autowired
     UserService userService;
 
-    @CrossOrigin
+//    @CrossOrigin
     @PostMapping("api/login")
-    public Result login(@RequestBody User requestUser, HttpSession session){
+    public Result login(@RequestBody User requestUser, HttpSession session,
+                        @RequestParam boolean rememberMe){
         //对html标签进行转义，防止XSS攻击
         String username = HtmlUtils.htmlEscape(requestUser.getUsername());
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(username, requestUser.getPassword());
+        System.out.println("rememberMe: "+rememberMe);
+        usernamePasswordToken.setRememberMe(rememberMe);
         try {
             subject.login(usernamePasswordToken);
             return ResultFactory.buildSuccessResult(username);
@@ -76,4 +79,18 @@ public class LoginController {
             return ResultFactory.buildSuccessResult(user);
         }
     }
+
+    @GetMapping("/api/logout")
+    public Result logout(){
+        Subject subject = SecurityUtils.getSubject();
+        subject.logout();
+        String message = "成功登出!";
+        return ResultFactory.buildSuccessResult(message);
+    }
+
+    @GetMapping("/api/authentication")
+    public String authentication(){
+        return "身份认证成功";
+    }
+
 }

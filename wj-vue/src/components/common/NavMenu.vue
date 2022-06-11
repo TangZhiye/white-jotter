@@ -11,6 +11,7 @@
       {{ item.navItem }}
     </el-menu-item>
     <a href="#nowhere" style="color: #222;float: right;padding: 20px;">更多功能</a>
+    <i class="el-icon-switch-button" v-on:click="logout" style="float:right;font-size: 40px;color: #222;padding: 10px"></i>
     <i class="el-icon-menu" style="float:right;font-size: 45px;color: #222;padding-top: 8px"></i>
     <span style="position: absolute;padding-top: 20px;right: 43%;font-size: 20px;font-weight: bold">White Jotter - Your Mind Palace</span>
   </el-menu>
@@ -28,10 +29,40 @@ export default {
         {name: '/admin', navItem: '个人中心'}
       ]
     }
+  },
+  methods: {
+    logout () {
+      const _this = this
+      this.$confirm('确定登出账号吗?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        this.$axios.get('/logout')
+          .then(resp => {
+            if (resp && resp.status === 200) {
+              _this.$store.commit('logout')
+              this.$message({
+                type: 'success',
+                message: resp.data.result
+              })
+              _this.$router.replace('/login')
+            }
+          })
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消登出'
+        })
+      })
+    }
   }
 }
 </script>
 
 <style scoped>
-
+.el-icon-switch-button{
+  cursor: pointer;
+  outline: 0;
+}
 </style>

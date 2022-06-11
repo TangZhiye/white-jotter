@@ -14,6 +14,9 @@
       <el-form-item>
         <el-button type="success" style="width: 100%;background: lightsteelblue; border: none" v-on:click="register">注册</el-button>
       </el-form-item>
+      <el-footer>
+        <el-checkbox v-model="rememberMe" style="float: right">十天内记住我</el-checkbox>
+      </el-footer>
     </el-form>
   </body>
 
@@ -28,26 +31,36 @@ export default {
         username: 'admin',
         password: '123'
       },
-      responseResult: []
+      responseResult: [],
+      rememberMe: false
     }
   },
   methods: {
     login () {
       var _this = this
-      console.log(this.$store.state)
-      this.$axios.post('/login', {
+      // console.log(this.$store.state)
+      this.$axios.post('/login?rememberMe=' + this.rememberMe, {
         username: this.loginForm.username,
         password: this.$md5(this.loginForm.password)
       })
-        .then(successResponse => {
-          if (successResponse.data.code === 200) {
-            _this.$store.commit('login', _this.loginForm)
+        .then(resp => {
+          if (resp.data.code === 200) {
+            _this.$store.commit('login', _this.loginForm.username)
             var path = this.$route.query.redirect
             this.$router.replace({path: path === '/' || path === undefined ? '/index' : path})
             // this.$router.replace({path: '/index'})
+          } else {
+            this.$message({
+              message: resp.data.message,
+              type: 'warning'
+            })
           }
         })
-        .catch(failResponse => {
+        .catch(resp => {
+          this.$message({
+            message: resp.data.message,
+            type: 'warning'
+          })
         })
     },
     register () {
