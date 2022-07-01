@@ -67,7 +67,7 @@ public class ShiroConfiguration {
     @Bean
     public SimpleCookie rememberMeCookie(){
         SimpleCookie simpleCookie = new SimpleCookie("rememberMe");
-        simpleCookie.setMaxAge(60*60*24*30); // 60*60*24*30 秒 = 30 天
+        simpleCookie.setMaxAge(60*60*24*10); // 60*60*24*10 秒 = 10 天
         return simpleCookie;
     }
 }

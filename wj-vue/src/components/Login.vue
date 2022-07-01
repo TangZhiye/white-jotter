@@ -28,7 +28,7 @@ export default {
   data () {
     return {
       loginForm: {
-        username: 'admin',
+        username: 'tang',
         password: '123'
       },
       responseResult: [],

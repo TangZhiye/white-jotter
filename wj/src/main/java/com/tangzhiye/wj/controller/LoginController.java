@@ -30,7 +30,6 @@ public class LoginController {
         String username = HtmlUtils.htmlEscape(requestUser.getUsername());
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(username, requestUser.getPassword());
-        System.out.println("rememberMe: "+rememberMe);
         usernamePasswordToken.setRememberMe(rememberMe);
         try {
             subject.login(usernamePasswordToken);
