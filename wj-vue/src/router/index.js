@@ -6,6 +6,7 @@ import AppIndex from '../components/home/AppIndex'
 import Home from '../components/Home'
 import LibraryIndex from '../components/library/LibraryIndex'
 import Register from '../components/Register'
+import AdminIndex from '../components/admin/AdminIndex'
 
 Vue.use(Router)
 
@@ -55,6 +56,21 @@ export default new Router({
       path: '/register',
       name: 'Register',
       component: Register
+    },
+    {
+      path: '/admin',
+      name: 'Admin',
+      component: AdminIndex,
+      children: [
+        {
+          path: '/admin/dashboard',
+          name: 'Dashboard',
+          component: () => import('../components/admin/dashboard/admin/index')
+        }
+      ],
+      meta: {
+        requireAuth: true
+      }
     }
   ]
 })

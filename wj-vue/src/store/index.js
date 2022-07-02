@@ -9,8 +9,8 @@ export default new Vuex.Store({
     //   username: window.localStorage.getItem('user') === null ? '' : JSON.parse(window.localStorage.getItem('user')).username
     //   // username: window.sessionStorage.getItem('user') === null ? '' : JSON.parse(window.sessionStorage.getItem('user')).username
     // }
-    username: window.localStorage.getItem('username') === null ? '' : window.localStorage.getItem('username')
-
+    username: window.localStorage.getItem('username') === null ? '' : window.localStorage.getItem('username'),
+    adminMenus: []
   },
   mutations: {
     login (state, username) {
@@ -21,6 +21,10 @@ export default new Vuex.Store({
     logout (state) {
       state.username = ''
       window.localStorage.removeItem('username')
+      state.adminMenus = []
+    },
+    initAdminMenu (state, fmtAdminMenus) {
+      state.adminMenus = fmtAdminMenus
     }
   }
 })
