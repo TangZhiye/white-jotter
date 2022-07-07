@@ -2,7 +2,7 @@
   <el-menu
     :default-active="currentPath"
     class="el-menu-admin"
-    router
+    :router="true"
     mode="vertical"
     background-color="#545c64"
     text-color="#fff"
@@ -11,7 +11,6 @@
     <div style="height: 80px;"></div>
     <!--index 没有用但是必需字段-->
     <el-submenu  v-for="(item,i) in adminMenus" :key="i" :index="(i).toString()" style="text-align: left">
-<!--        <span slot="title" style="font-size: 17px;">-->
       <span slot="title" style="font-size: 17px;">
         <i :class="item.iconCls"></i>
         {{item.nameZh}}

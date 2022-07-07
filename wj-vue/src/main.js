@@ -66,6 +66,8 @@ const initAdminMenu = (router, store) => {
       // console.log(resp.data)
       var fmtRoutes = formatRoutes(resp.data)
       // console.log(fmtRoutes)
+      // 向路由表中添加信息
+      router.addRoutes(fmtRoutes)
       store.commit('initAdminMenu', fmtRoutes)
       // console.log(store.state.adminMenus)
     }

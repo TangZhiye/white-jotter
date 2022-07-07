@@ -7,16 +7,14 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "admin_role")
+@Table(name = "admin_role_permission")
 @JsonIgnoreProperties({"handler","hibernateLazyInitializer"})
-public class AdminRole {
+public class AdminRolePermission {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-    private String name;
-    private String nameZh;
-    private boolean enabled;
 
-
+    private int rid;
+    private int pid;
 }
